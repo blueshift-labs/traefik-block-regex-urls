@@ -8,14 +8,22 @@ Sample configuration in Traefik.
 
 ### Configuration as local plugin
 
-traefik.yml
+static.yml (development)
 
 ```yaml
-
 experimental:
   localPlugins:
     block-regex-urls:
-      moduleName: github.com/blueshift-labs/traefik-block-regex-urls
+      moduleName: 'github.com/blueshift-labs/traefik-block-regex-urls'
+```
+
+static.yml (production)
+
+```yaml
+  plugins:
+    block-regex-urls:
+      moduleName: 'github.com/blueshift-labs/traefik-block-regex-urls'
+      version: 'v0.0.4'
 ```
 
 dynamic-configuration.yml
@@ -76,38 +84,4 @@ my-block-regex-urls:
         - "^something.mydomain.tld\\/scan\\?uid=12345(.*)&gid=6789(.*)"
         - "^something.mydomain.tld\\/scan\\?uid=345$"
       statusCode: 418
-```
-
-## Contributors
-
-| [<img alt="ShantanuGadgil" src="https://avatars.githubusercontent.com/u/2508915?v=4" width="117"/>](https://github.com/blueshift-labs) |
-| :---------------------------------------------------------------------------------------------------------------------------------------: |
-| [Shantanu Gadgil](https://github.com/blueshift-labs) |
-
-## License
-
-traefik-block-regex-urls is distributed under the MIT license. [See LICENSE](LICENSE) for details.
-
-```
-MIT License
-
-Copyright (c) 2025-today Shantanu Gadgil
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 ```
