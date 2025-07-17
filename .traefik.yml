@@ -17,7 +17,6 @@ summary: 'Block access to certain paths using a list of regex values and return 
 # This is mandatory,
 # and Traefik Pilot will try to execute the plugin with the data you provide as part of its startup validity tests.
 testData:
-  allowLocalRequests: true
   exact_match:
     - "something"
   regex:

@@ -23,7 +23,7 @@ static.yml (production)
   plugins:
     block-regex-urls:
       moduleName: 'github.com/blueshift-labs/traefik-block-regex-urls'
-      version: 'v0.0.4'
+      version: 'v0.0.1'
 ```
 
 dynamic-configuration.yml
@@ -34,7 +34,6 @@ http:
     block-scan-paths:
       plugin:
         block-regex-urls:
-          allowLocalRequests: true
           exact_match:
             - "some_exact_string_with_regex_chars_?/._to_block"
           regex:
@@ -68,16 +67,14 @@ services:
 
 ## Sample configuration
 
-- `allowLocalRequests`: If set to true, will not block request from [Private IP Ranges](https://en.wikipedia.org/wiki/Private_network)
 - `regex`:  List of regex values to use for url blocking.
-- `strings`:  List of string values to use for url blocking.
+- `exact_match`:  List of exact matching strings to use for url blocking.
 - `statusCode`: Return value of the status code.
 
 ```yaml
 my-block-regex-urls:
   plugin:
     block-regex-urls:
-      allowLocalRequests: true
       exact_match:
         - "some_string_to_block"
       regex:
