@@ -1,0 +1,25 @@
+# The name of your plugin as displayed in the Traefik Pilot web UI.
+displayName: Block Regex Urls by Blueshift
+
+# For now, `middleware` is the only type available.
+type: middleware
+
+# The import path of your plugin.
+import: github.com/blueshift-labs/traefik-block-regex-urls
+
+# A brief description of what your plugin is doing.
+summary: 'Block access to certain paths using a list of regex values and return a defined status code'
+
+# Medias associated to the plugin (optional)
+# Empty
+
+# Configuration data for your plugin.
+# This is mandatory,
+# and Traefik Pilot will try to execute the plugin with the data you provide as part of its startup validity tests.
+testData:
+  allowLocalRequests: true
+  exact_match:
+    - "something"
+  regex:
+    - "^/wp(.*)/scan\\?uid=12345&tid=4567"
+  statusCode: 418

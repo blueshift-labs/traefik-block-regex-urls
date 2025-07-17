@@ -1,0 +1,35 @@
+name: CI
+on: [push]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: 'build, staticcheck, test'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: ['1.24.5']
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-go@v5
+      with:
+        go-version: ${{ matrix.go-version }}
+        cache: false
+
+    - name: Install dependencies
+      run: go get .
+
+    - name: Install staticcheck
+      run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+    - name: Run staticcheck
+      run: staticcheck ./...
+
+    - name: Test
+      run: go test -v -cover
+
+    - name: Build
+      run: go build

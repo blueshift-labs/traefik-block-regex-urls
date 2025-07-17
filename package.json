@@ -1,0 +1,39 @@
+{
+  "name": "traefik-block-regex-urls",
+  "version": "0.0.0",
+  "description": "A traefik plugin to block access to certain paths using a list of regex values and return a defined status code.",
+  "author": {
+    "name": "Blueshift",
+    "url": "https://github.com/blueshift-labs/",
+    "email": "support@blueshift.com"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blueshift-labs/traefik-block-regex-urls.git"
+  },
+  "scripts": {
+    "build:prod": "go build",
+    "lint": "golangci-lint run -v",
+    "prepare": "is-ci || husky",
+    "pre-push": "npm run test:unit && npm run build:prod",
+    "test:unit": "go test -v -cover"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "commitlint-presets": "^2.1.0",
+    "husky": "^9.1.7",
+    "is-ci": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=22.11.0",
+    "npm": ">=10.9.1"
+  },
+  "commitlint": {
+    "extends": [
+      "./node_modules/commitlint-presets/index.js"
+    ]
+  }
+}
