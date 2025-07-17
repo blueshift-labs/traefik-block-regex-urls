@@ -1,6 +1,6 @@
 # Traefik Block Regex Urls
 
-A [Traefik](https://github.com/containous/traefik) plugin to block access to certain paths using a list of regex values and return a defined status code.
+A [Traefik](https://github.com/traefik/traefik) plugin to block access to certain paths using a list of regex values and return a defined status code.
 
 ## Configuration
 
@@ -56,7 +56,7 @@ services:
     ports:
       - "80:80"
   hello:
-    image: containous/whoami
+    image: traefik/whoami
     labels:
       - traefik.enable=true
       - traefik.http.routers.hello.entrypoints=http
