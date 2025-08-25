@@ -23,7 +23,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "commitlint-presets": "^2.1.0",
+    "commitlint-presets": "^2.1.1",
     "husky": "^9.1.7",
     "is-ci": "^4.1.0"
   },
